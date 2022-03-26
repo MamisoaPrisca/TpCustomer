@@ -77,13 +77,7 @@
                         <f:facet name="header">
                             <h:outputText value="DiscountCode"/>
                         </f:facet>
-                        <h:outputText value="#{item.discountCode}"/>
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">
-                            <h:outputText value="Zip"/>
-                        </f:facet>
-                        <h:outputText value="#{item.zip}"/>
+                        <h:outputText value="#{item.discountCode.discountCode} : #{item.discountCode.rate} %"/>
                     </h:column>
                 </h:dataTable>
             </h:form>
