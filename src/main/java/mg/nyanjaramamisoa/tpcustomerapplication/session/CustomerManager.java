@@ -25,10 +25,10 @@ public class CustomerManager {
      * select * from customer
      * @return 
      */
-     public List<Customer> getAllCustomers() { 
-         Query query = em.createNamedQuery("Customer.findAll");
-        return query.getResultList();  
-    }  
+    public List<Customer> getAllCustomers() {
+       Query query = em.createNamedQuery("Customer.findAll");
+       return query.getResultList();
+    }
     /**
      * Update Customer
      * @param customer
