@@ -44,9 +44,11 @@
                         <f:selectItems value="#{customerDetailsMBean.discountCodes}" var="discountCode" itemLabel="#{discountCode.discountCode}" itemValue="#{discountCode.rate}"/>
                     </h:selectOneMenu>
                 </h:panelGrid>
+                <h:button id="back" value="Revenir à la liste" outcome="CustomerList"/>
+                <h:commandButton id="update" value="Enregistrer" action="#{customerDetailsMBean.update}"/>
             </h:form>
         </f:view>
-
+        
     </h:body>
 </html>
 
