@@ -39,10 +39,15 @@
                     <h:outputLabel value="CreditLimit:" for="creditLimit" />
                     <h:inputText id="creditLimit" value="#{customerDetailsMBean.details.creditLimit}" title="CreditLimit" />
                     <h:outputLabel value="DiscountCode:" for="discountCode" />
-                    <h:selectOneMenu id="discountCode" value="#{customerDetailsMBean.discountCodes}" title="DiscountCode" required="true" requiredMessage="The DiscountCode field is required.">
-                        <!-- TODO: update below reference to list of available items-->
-                        <f:selectItems value="#{customerDetailsMBean.discountCodes}" var="discountCode" itemLabel="#{discountCode.discountCode}" itemValue="#{discountCode.rate}"/>
-                    </h:selectOneMenu>
+                    <h:messages/>
+                   <h:selectOneMenu id="discountCode" value="#{customerDetailsMBean.details.discountCode}"   
+                                    title="DiscountCode" required="true" 
+                                    requiredMessage="The DiscountCode field is required."  
+                                    converter="#{customerDetailsMBean.discountCodeConverter}">   
+                       <f:selectItems value="#{customerDetailsMBean.discountCodes}"  
+                                      var="item"   
+                                      itemLabel="#{item.discountCode} : #{item.rate} %" itemValue="#{item}" />  
+                   </h:selectOneMenu>
                 </h:panelGrid>
                 <h:button id="back" value="Revenir à la liste" outcome="CustomerList"/>
                 <h:commandButton id="update" value="Enregistrer" action="#{customerDetailsMBean.update}"/>

@@ -7,6 +7,9 @@ package mg.nyanjaramamisoa.tpcustomerapplication.managedbeans;
 import java.io.Serializable;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.faces.component.UIComponent;
+import javax.faces.context.FacesContext;
+import javax.faces.convert.Converter;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import mg.nyanjaramamisoa.tpcustomerapplication.entities.Customer;
@@ -71,4 +74,32 @@ public class CustomerDetailsMBean implements Serializable {
   public List<DiscountCode> getDiscountCodes() {
     return discountCodeManager.getAllDiscountCodes();
   }
+  /**
+   * getter pour la propriété discountCodeConverter.
+     * @return 
+   */              
+  public Converter<DiscountCode> getDiscountCodeConverter() {
+    return new Converter<DiscountCode>() {
+      /**
+       * Convertit une String en DiscountCode.
+       *
+       * @param value valeur à convertir
+       */
+      @Override
+      public DiscountCode getAsObject(FacesContext context, UIComponent component, String value) {
+        return discountCodeManager.findById(value);
+      }
+
+      /**
+       * Convertit un DiscountCode en String.
+       *
+       * @param value valeur à convertir
+       */
+      @Override
+      public String getAsString(FacesContext context, UIComponent component, DiscountCode value) {
+        return value.getDiscountCode();
+      }
+    };
+  }
+  
 }
